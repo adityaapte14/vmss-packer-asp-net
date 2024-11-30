@@ -24,5 +24,5 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
     - name: Restore Packages
       run: nuget restore SimpleWebApplication.sln
-    - name: Build System
-      run: msbuild SimpleWebApplication.sln -t:rebuild -property:Configuration=Release
+    - name: Publish Application
+      run: msbuild SimpleWebApplication.sln /t:rebuild /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="WebApp.zip" /p:DeployIisAppPath="Default Web Site"
